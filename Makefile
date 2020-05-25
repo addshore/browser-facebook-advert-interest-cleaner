@@ -1,2 +1,0 @@
-dist/chrome.zip:
-	gunzip
