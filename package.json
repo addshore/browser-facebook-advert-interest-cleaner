@@ -1,0 +1,12 @@
+{
+  "name": "facebook-ad-interest-cleaner",
+  "version": "1.0.2",
+  "description": "facebook-ad-interest-cleaner",
+  "scripts": {
+    "dev": "webextension-toolbox dev",
+    "build": "webextension-toolbox build --no-minimize"
+  },
+  "devDependencies": {
+    "webextension-toolbox": "latest"
+  }
+}

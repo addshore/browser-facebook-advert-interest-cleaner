@@ -1,0 +1,14 @@
+{
+  "appName": {
+    "message": "Facebook Advert Interest Cleaner",
+    "description": "The name of the application"
+  },
+  "appShortName": {
+    "message": "fbadintclean",
+    "description": "The short_name (maximum of 12 characters recommended) is a short version of the app's name."
+  },
+  "appDescription": {
+    "message": "A little button to automatically clear your Facebook ad interests.",
+    "description": "The description of the application"
+  }
+}
