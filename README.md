@@ -1,6 +1,6 @@
 # Facebook advert interest cleaner
 
-![GitHubCounter Icon](https://github.com/addshore/browser-facebook-advert-interest-cleaner/blob/master/app/icon128.png)
+![Icon](https://github.com/addshore/browser-facebook-advert-interest-cleaner/blob/master/app/images/icon128.png)
 
 A browser extension that provides a small button to easily clear all of your Facebook advert interests.
 
