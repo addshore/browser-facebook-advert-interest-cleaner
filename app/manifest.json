@@ -20,7 +20,9 @@
     {
       "matches": [
         "*://www.facebook.com/ads/preferences",
-        "*://www.facebook.com/ads/preferences/*"
+        "*://www.facebook.com/ads/preferences/*",
+        "*://www.facebook.com/ds/preferences",
+        "*://www.facebook.com/ds/preferences/*"
       ],
       "js": [
         "scripts/facebook-ads-preferences-interests.js"
