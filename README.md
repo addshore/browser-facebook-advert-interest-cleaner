@@ -50,6 +50,8 @@ This extension uses [webextension-toolbox](https://github.com/HaNdTriX/webextens
     npm run build opera
     npm run build edge
 
+These commands will output built files to the `dist` directory, but also zips to `packages`.
+
 ### Environment
 
 The build tool also defines a variable named `process.env.NODE_ENV` in your scripts. 
