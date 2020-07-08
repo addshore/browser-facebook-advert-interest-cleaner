@@ -7,7 +7,10 @@ A browser extension that provides a small button to easily clear all of your Fac
 ## How to install?
 
 Download it from:
- - 
+ - Chrome: https://chrome.google.com/webstore/detail/facebook-advert-interest/nheaildopjpofjpkeihboipgnagofndi
+ - Mozilla:  https://addons.mozilla.org/en-US/firefox/addon/facebook-ad-interest-cleaner/
+ - Edge: https://microsoftedge.microsoft.com/addons/detail/jfjcfgaegiecjgaimdiadeokpipdmeli
+ - Opera: Still pending?
 
 ## How it works?
 
