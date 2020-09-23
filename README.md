@@ -62,6 +62,12 @@ These commands will output built files to the `dist` directory, but also zips to
   - manifest.json
 - Update the CHANGELOG
 - Update the version in the text in the main JS file
+- Build all of the versions
+- Upload to the various stores
+  - [Chrome](https://chrome.google.com/webstore/devconsole)
+  - [Mozilla](https://addons.mozilla.org/en-US/developers/)
+  - [Edge](https://partner.microsoft.com/en-us/dashboard/microsoftedge/overview)
+  - [Opera](https://addons.opera.com/developer/)
 
 ### Environment
 
