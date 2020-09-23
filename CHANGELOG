@@ -1,3 +1,7 @@
+1.0.5
+
+Run on all frames in order to work with the new FB UI (which has these elements in an frame)
+
 1.0.4
 
 Also enable the code on /ds/ facebook urls (apparently also a thing)

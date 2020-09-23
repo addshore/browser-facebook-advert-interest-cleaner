@@ -31,7 +31,7 @@
         "styles/facebook-ads-preferences-interests.css"
       ],
       "run_at": "document_idle",
-      "all_frames": false
+      "all_frames": true
     }
   ]
 }

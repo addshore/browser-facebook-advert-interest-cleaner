@@ -1,13 +1,20 @@
 console.log("Running addon script")
 
-document.getElementById('interests').insertAdjacentHTML('beforebegin',
-	'<div id="wpdtFbInterestsArea" class="wpdtArea"></div>');
+var interestsElement = document.getElementById('interests');
+if(interestsElement){
+  init( interestsElement );
+}
+
+function init( element ) {
+
+var injectHtml = '<div id="wpdtFbInterestsArea" class="wpdtArea"></div>';
+element.insertAdjacentHTML('beforebegin', injectHtml);
 var area = document.getElementById("wpdtFbInterestsArea");
 
 var preButtonText = document.createElement('span');
 preButtonText.innerHTML = "<strong>Facebook Advert Interest Cleaner (for English Facebook only).</strong><br>\n" +
-	"Please make sure your Facebook language is set to <strong>English</strong> for this button to work.<br>\n" +
-	"You can alter your language at the bottom of the page.<br>"
+  "Please make sure your Facebook language is set to <strong>English</strong> for this button to work.<br>\n" +
+  "You can alter your language at the bottom of the page.<br>"
 area.append(preButtonText)
 
 var button = document.createElement("input");
@@ -82,3 +89,5 @@ button.addEventListener("click", async function() {
 	window.scrollTo(0,0);
 
 }, false);
+
+}
