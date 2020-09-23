@@ -55,6 +55,14 @@ This extension uses [webextension-toolbox](https://github.com/HaNdTriX/webextens
 
 These commands will output built files to the `dist` directory, but also zips to `packages`.
 
+### For releasing
+
+- Bump the version number in:
+  - package.json
+  - manifest.json
+- Update the CHANGELOG
+- Update the version in the text in the main JS file
+
 ### Environment
 
 The build tool also defines a variable named `process.env.NODE_ENV` in your scripts. 

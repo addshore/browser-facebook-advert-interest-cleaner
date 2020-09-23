@@ -12,9 +12,10 @@ element.insertAdjacentHTML('beforebegin', injectHtml);
 var area = document.getElementById("wpdtFbInterestsArea");
 
 var preButtonText = document.createElement('span');
-preButtonText.innerHTML = "<strong>Facebook Advert Interest Cleaner (for English Facebook only).</strong><br>\n" +
+preButtonText.innerHTML = "<strong>Facebook Advert Interest Cleaner (for English Facebook only). v1.0.5</strong><br>\n" +
   "Please make sure your Facebook language is set to <strong>English</strong> for this button to work.<br>\n" +
-  "You can alter your language at the bottom of the page.<br>"
+  "You can alter your language at the bottom of the page.<br>\n" +
+  "If you have lots of interests you may need to use this tool multiple times (refreshing the page in between)"
 area.append(preButtonText)
 
 var button = document.createElement("input");
