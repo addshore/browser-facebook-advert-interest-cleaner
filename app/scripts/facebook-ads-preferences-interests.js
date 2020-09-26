@@ -12,10 +12,7 @@ element.insertAdjacentHTML('beforebegin', injectHtml);
 var area = document.getElementById("wpdtFbInterestsArea");
 
 var preButtonText = document.createElement('span');
-preButtonText.innerHTML = "<strong>Facebook Advert Interest Cleaner (for English Facebook only). v1.0.5</strong><br>\n" +
-  "Please make sure your Facebook language is set to <strong>English</strong> for this button to work.<br>\n" +
-  "You can alter your language at the bottom of the page.<br>\n" +
-  "If you have lots of interests you may need to use this tool multiple times (refreshing the page in between)"
+preButtonText.innerHTML = "<strong>Facebook Advert Interest Cleaner. v1.0.6</strong>: "
 area.append(preButtonText)
 
 var button = document.createElement("input");
@@ -25,7 +22,7 @@ button.value = "Remove all interests from visible interest tabs"
 area.append(button)
 
 var postButtonText = document.createElement('span');
-postButtonText.innerHTML = "<br>If your list of interests has a 'More' tab you may need to reload the page and click me multiple times."
+postButtonText.innerHTML = "<p>If your list of interests has a 'More' tab you may need to reload the page and click me multiple times.</p>"
 area.append(postButtonText)
 
 button.addEventListener("click", async function() {
