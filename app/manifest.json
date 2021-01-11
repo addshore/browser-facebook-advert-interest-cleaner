@@ -2,7 +2,7 @@
   "name": "__MSG_appName__",
   "short_name": "__MSG_appShortName__",
   "description": "__MSG_appDescription__",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "manifest_version": 2,
   "default_locale": "en",
   "icons": {
@@ -19,15 +19,14 @@
   "content_scripts": [
     {
       "matches": [
-        "*://www.facebook.com/adpreferences/*",
         "*://www.facebook.com/adpreferences/ad_settings",
         "*://www.facebook.com/adpreferences/ad_settings/*"
       ],
       "js": [
-        "scripts/facebook-ads-preferences-interests.js"
+        "scripts/adpreferences-ad_settings.js"
       ],
       "css": [
-        "styles/facebook-ads-preferences-interests.css"
+        "styles/adpreferences-ad_settings.css"
       ],
       "run_at": "document_idle",
       "all_frames": true

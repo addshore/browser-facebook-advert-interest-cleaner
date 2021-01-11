@@ -1,20 +1,46 @@
-var xpathForInterestsBoxHeading = "(//span[text() = 'Interest Categories'])[2]"
-var xpathForInterestsBox = xpathForInterestsBoxHeading + "/../../../.."
+var languageDetection = document.getElementsByTagName('html')[0].innerHTML.match('{"locale":"([^"]+)","language":"([^"]+)"}');
+var languageCode = languageDetection[1];
+var languageName = languageDetection[2];
 
 var injectedHtmlId = "wpdtFbInterestsArea"
 var waitBetweenClicks = 200
 
-var xpathForSeeAllInterestsButton = "//span[text() = 'See All Interests']"
-var xpathForRemoveButton = "//span[text() = 'Remove']"
+const langMapHeading = 'langMapHeading';
+const langMapRemoveButton = 'langMapRemoveButton';
+const langMapAllInterestsButton = 'langMapAllInterestsButton';
+var languageMap = {
+  "en_US" : {
+    langMapHeading: "Interest Categories",
+    langMapAllInterestsButton: "See All Interests",
+    langMapRemoveButton: "Remove",
+  }
+}
 
 function consoleLog(someOutput) {
-  console.log( "facebook-ads-preferences-interests: " + someOutput );
+  console.log( "facebook-adspreferences-add_settings: " + someOutput );
 }
-consoleLog( "Running" );
+function consoleLogAndDie(someOutput) {
+  consoleLog(someOutput)
+  throw new Error(someOutput);
+}
+
+// Bail if running on a page that has an unknown language
+if(!(languageCode in languageMap)){
+  consoleLogAndDie( "Can not run on page with language: " + languageName + " ("+languageCode+")" );
+}
+consoleLog( "Running with language: " + languageName + " ("+languageCode+")" );
+
+// Calculate some xpaths to use
+var xpathForInterestsBoxHeading = "(//span[text() = '"+languageMap[languageCode][langMapHeading]+"'])[2]"
+var xpathForInterestsBox = xpathForInterestsBoxHeading + "/../../../.."
+var xpathInBoxForSeeAllInterestsButton = "//span[text() = '"+languageMap[languageCode][langMapAllInterestsButton]+"']"
+var xpathInBoxForRemoveButton = "//span[text() = '"+languageMap[languageCode][langMapRemoveButton]+"']"
 
 // Try to setup our UI bit every second
 // This is needed as the elements we detect will not appear in the DOM until they are navigated to
 setInterval(tryInit, 500);
+consoleLog( "Waiting to find UI element to attach to..." );
+consoleLog( "Using XPATH: " + xpathForInterestsBox );
 function tryInit( )
 {
   var interestsBox = document.evaluate(xpathForInterestsBox,document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
@@ -24,12 +50,6 @@ function tryInit( )
     var interestsHeading = document.evaluate(xpathForInterestsBoxHeading,document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
     init( interestsBox, interestsHeading );
   }
-}
-
-function xpathPrepare(xpath, searchString) {
-  return xpath.replace("$u", searchString.toUpperCase())
-    .replace("$l", searchString.toLowerCase())
-    .replace("$s", searchString.toLowerCase());
 }
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -64,16 +84,17 @@ function init( boxElement, headingElement ) {
   button.addEventListener("click", async function() {
 
     async function clickSeeAllInterestsButton() {
-      var seeAll = document.evaluate(xpathForSeeAllInterestsButton,boxElement, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+      var seeAll = document.evaluate(xpathInBoxForSeeAllInterestsButton,boxElement, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
       if(!seeAll){
         consoleLog("Failed to find 'See All Interests' button");
+        return
       }
       consoleLog("Clicking a 'See All Interests' button to expand the list")
       await scrollClickAndWait(seeAll, waitBetweenClicks);
     }
 
     async function clickAllRemoveButtonsOnCurrentPage() {
-      let allRemoveButtons = document.evaluate(xpathForRemoveButton,boxElement, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+      let allRemoveButtons = document.evaluate(xpathInBoxForRemoveButton,boxElement, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
       consoleLog("Clicking on " + allRemoveButtons.snapshotLength + " 'Remove' buttons")
       for (let i=0; i<allRemoveButtons.snapshotLength; i++) {
         await scrollClickAndWait(allRemoveButtons.snapshotItem(i), waitBetweenClicks);
@@ -83,7 +104,6 @@ function init( boxElement, headingElement ) {
     // Do the deeds
     await clickSeeAllInterestsButton();
     await clickAllRemoveButtonsOnCurrentPage();
-    await removeAllInterestsForAllClickableTabs();
     console.log("All done!")
 
     // Scroll back to the top (incase we ended up somewhere odd)

@@ -1,5 +1,12 @@
 # Change log
 
+## 1.0.7 (TBA)
+
+- Added multilingual functionality. Currently supported:
+  - en_US
+- Fixed issue when no "See All Interests" button was shown
+- Fixed issue with not defined `removeAllInterestsForAllClickableTabs` method
+
 ## 1.0.6 (11 January 2021)
 
 - Fixes for Facebook page changes
