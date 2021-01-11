@@ -16,7 +16,10 @@ Download it from:
 
  1) Install the extension from the browser store
  2) Navigate to your Facebook advert interests page
- 3) Click the button to clear your interests
+   - https://www.facebook.com/adpreferences/ad_settings
+   - Categories used to reach you
+   - Interest Categories
+ 3) Click the button provided by the extensions to clear all of your interests
 
 An example:
 

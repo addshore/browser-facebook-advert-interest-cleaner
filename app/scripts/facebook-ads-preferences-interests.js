@@ -1,91 +1,94 @@
-console.log("Running addon script")
+var xpathForInterestsBoxHeading = "(//span[text() = 'Interest Categories'])[2]"
+var xpathForInterestsBox = xpathForInterestsBoxHeading + "/../../../.."
 
-var interestsElement = document.getElementById('interests');
-if(interestsElement){
-  init( interestsElement );
+var injectedHtmlId = "wpdtFbInterestsArea"
+var waitBetweenClicks = 200
+
+var xpathForSeeAllInterestsButton = "//span[text() = 'See All Interests']"
+var xpathForRemoveButton = "//span[text() = 'Remove']"
+
+function consoleLog(someOutput) {
+  console.log( "facebook-ads-preferences-interests: " + someOutput );
+}
+consoleLog( "Running" );
+
+// Try to setup our UI bit every second
+// This is needed as the elements we detect will not appear in the DOM until they are navigated to
+setInterval(tryInit, 500);
+function tryInit( )
+{
+  var interestsBox = document.evaluate(xpathForInterestsBox,document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  var injectedArea = document.getElementById(injectedHtmlId);
+  if(interestsBox && !injectedArea){
+    consoleLog( "Found element to attach UI to" );
+    var interestsHeading = document.evaluate(xpathForInterestsBoxHeading,document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+    init( interestsBox, interestsHeading );
+  }
 }
 
-function init( element ) {
+function xpathPrepare(xpath, searchString) {
+  return xpath.replace("$u", searchString.toUpperCase())
+    .replace("$l", searchString.toLowerCase())
+    .replace("$s", searchString.toLowerCase());
+}
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+async function scrollClickAndWait( element, ms) {
+  element.scrollIntoView(false);
+  element.click();
+  await sleep(ms)
+}
 
-var injectHtml = '<div id="wpdtFbInterestsArea" class="wpdtArea"></div>';
-element.insertAdjacentHTML('beforebegin', injectHtml);
-var area = document.getElementById("wpdtFbInterestsArea");
+// Called once the box element is found
+function init( boxElement, headingElement ) {
 
-var preButtonText = document.createElement('span');
-preButtonText.innerHTML = "<strong>Facebook Advert Interest Cleaner. v1.0.6</strong>: "
-area.append(preButtonText)
+  // Inject a DOM element that we will add our UI to
+  var injectHtml = '<div id="' + injectedHtmlId + '" class="wpdtArea"></div>';
+  headingElement.insertAdjacentHTML('afterend', injectHtml);
+  var area = document.getElementById(injectedHtmlId);
 
-var button = document.createElement("input");
-button.id = "wpdtClearInterests"
-button.type = "button"
-button.value = "Remove all interests from visible interest tabs"
-area.append(button)
+  // Add the custom UI elements
+  // text body
+  var preButtonText = document.createElement('span');
+  preButtonText.innerHTML = "<strong>Facebook Advert Interest Cleaner. v1.0.6</strong>: "
+  area.append(preButtonText)
+  // button
+  var button = document.createElement("input");
+  button.id = "wpdtClearInterests"
+  button.type = "button"
+  button.value = "Remove all interests"
+  area.append(button)
 
-var postButtonText = document.createElement('span');
-postButtonText.innerHTML = "<p>If your list of interests has a 'More' tab you may need to reload the page and click me multiple times.</p>"
-area.append(postButtonText)
+  // When the button is clicked
+  button.addEventListener("click", async function() {
 
-button.addEventListener("click", async function() {
-	function xpathPrepare(xpath, searchString) {
-		return xpath.replace("$u", searchString.toUpperCase())
-			.replace("$l", searchString.toLowerCase())
-			.replace("$s", searchString.toLowerCase());
-	}
-	function sleep(ms) {
-		return new Promise(resolve => setTimeout(resolve, ms));
-	}
-	async function scrollClickAndWait( element, ms) {
-		element.scrollIntoView(false);
-		element.click();
-		await sleep(ms)
-	}
+    async function clickSeeAllInterestsButton() {
+      var seeAll = document.evaluate(xpathForSeeAllInterestsButton,boxElement, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+      if(!seeAll){
+        consoleLog("Failed to find 'See All Interests' button");
+      }
+      consoleLog("Clicking a 'See All Interests' button to expand the list")
+      await scrollClickAndWait(seeAll, waitBetweenClicks);
+    }
 
-	async function clickAllSeeMoreLinksOnCurrentPage() {
-		let moreSeeMoreLinks = true
-		while(moreSeeMoreLinks === true) {
-			var seeMore = document.evaluate(
-				xpathPrepare("//div[@id='interests'][1]//div//text()[translate(., '$u', '$l')='$s']/..", "See more"),
-				document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null
-			).singleNodeValue;
-			if(seeMore) {
-				console.log("Clicking a 'See more' link to expand the page")
-				await scrollClickAndWait(seeMore, 200);
-			} else {
-				moreSeeMoreLinks = false
-			}
-		}
-	}
+    async function clickAllRemoveButtonsOnCurrentPage() {
+      let allRemoveButtons = document.evaluate(xpathForRemoveButton,boxElement, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+      consoleLog("Clicking on " + allRemoveButtons.snapshotLength + " 'Remove' buttons")
+      for (let i=0; i<allRemoveButtons.snapshotLength; i++) {
+        await scrollClickAndWait(allRemoveButtons.snapshotItem(i), waitBetweenClicks);
+      }
+    }
 
-	async function clickAllRemoveButtonsOnCurrentPage() {
-		let allRemoveButtons = document.evaluate(
-			xpathPrepare("//div[@id='interests'][1]//button/@data-tooltip-content[translate(., '$u', '$l')='$s']/..", "Remove"),
-			document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null
-		);
-		console.log("Clicking on " + allRemoveButtons.snapshotLength + " 'Remove' buttons")
-		for (let i=0; i<allRemoveButtons.snapshotLength; i++) {
-			await scrollClickAndWait(allRemoveButtons.snapshotItem(i), 200);
-		}
-	}
+    // Do the deeds
+    await clickSeeAllInterestsButton();
+    await clickAllRemoveButtonsOnCurrentPage();
+    await removeAllInterestsForAllClickableTabs();
+    console.log("All done!")
 
-	async function removeAllInterestsForAllClickableTabs() {
-		let allVisibleInterestTabs = document.evaluate(
-			"//div[@id='interests'][1]//ul[@role='tablist'][1]//li[@role='presentation']/a",
-			document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null
-		);
-		console.log("Clicking on " + allVisibleInterestTabs.snapshotLength + " 'Interest' tabs")
-		for (let i=0; i<allVisibleInterestTabs.snapshotLength; i++) {
-			console.log(allVisibleInterestTabs.snapshotItem(i))
-			await scrollClickAndWait( allVisibleInterestTabs.snapshotItem(i), 200 )
-			await clickAllSeeMoreLinksOnCurrentPage()
-			await clickAllRemoveButtonsOnCurrentPage()
-		}
-	}
+    // Scroll back to the top (incase we ended up somewhere odd)
+    window.scrollTo(0,0);
 
-	await removeAllInterestsForAllClickableTabs();
-	console.log("All done!")
-
-	window.scrollTo(0,0);
-
-}, false);
+  }, false);
 
 }
