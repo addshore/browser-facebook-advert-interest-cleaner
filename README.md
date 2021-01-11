@@ -4,6 +4,8 @@
 
 A browser extension that provides a small button to easily clear all of your Facebook advert interests.
 
+**Note: Facebook likes to change its UI lots** which might break this extension. If it doesn't work for you [please file an issue](https://github.com/addshore/browser-facebook-advert-interest-cleaner/issues)!
+
 ## How to install?
 
 Download it from:
@@ -15,15 +17,13 @@ Download it from:
 ## How it works?
 
  1) Install the extension from the browser store
- 2) Navigate to your Facebook advert interests page
-   - https://www.facebook.com/adpreferences/ad_settings
-   - Categories used to reach you
-   - Interest Categories
- 3) Click the button provided by the extensions to clear all of your interests
+ 2) Navigate to your [Facebook advert settings](https://www.facebook.com/adpreferences/ad_settings)
+ 3) Navigate to the interests section (Categories used to reach you >> Interest Categories)
+ 4) Click the button provided by the extensions to clear all of your interests!
 
-An example:
+## What does it look like?
 
-![](https://github.com/addshore/browser-facebook-advert-interest-cleaner/blob/master/media/screenshot.png)
+![](./media/screenshot-1280x800.png)
 
 ## Icon
 
@@ -50,6 +50,8 @@ This extension uses [webextension-toolbox](https://github.com/HaNdTriX/webextens
     npm run dev edge
 
 ### For builds
+
+MAke sure you update the version number everywhere & the date that is displayed in the UI.
 
     npm run build chrome
     npm run build firefox

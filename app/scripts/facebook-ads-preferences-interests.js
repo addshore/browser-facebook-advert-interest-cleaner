@@ -51,7 +51,7 @@ function init( boxElement, headingElement ) {
   // Add the custom UI elements
   // text body
   var preButtonText = document.createElement('span');
-  preButtonText.innerHTML = "<strong>Facebook Advert Interest Cleaner. v1.0.6</strong>: "
+  preButtonText.innerHTML = "<strong>Facebook Advert Interest Cleaner (11 Jan 2021)</strong>: "
   area.append(preButtonText)
   // button
   var button = document.createElement("input");
