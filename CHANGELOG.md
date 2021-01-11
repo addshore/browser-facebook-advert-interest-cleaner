@@ -1,6 +1,6 @@
 # Change log
 
-## 1.0.7 (TBA)
+## 1.0.7 (11 January 2021)
 
 - Added multilingual functionality. Currently supported:
   - en_US, en_GB, de_DE, fr_FR, pt_BR, pt_PT, tr_TR
