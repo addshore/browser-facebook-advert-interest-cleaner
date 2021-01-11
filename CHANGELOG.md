@@ -3,7 +3,7 @@
 ## 1.0.7 (TBA)
 
 - Added multilingual functionality. Currently supported:
-  - en_US, de_DE
+  - en_US, en_GB, de_DE, fr_FR, pt_BR, pt_PT, tr_TR
 - Fixed issue when no "See All Interests" button was shown
 - Fixed issue with not defined `removeAllInterestsForAllClickableTabs` method
 

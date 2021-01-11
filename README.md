@@ -17,7 +17,7 @@ Download it from:
 ## How to use it?
 
  1) Install the extension from the browser store
- 2) Switch Facebook to a supported language (Current en_US, en_GB, de_DE)
+ 2) Switch Facebook to a supported language (Current en_US, en_GB, de_DE, fr_FR, pt_BR, pt_PT, tr_TR)
  3) Navigate to your [Facebook advert settings](https://www.facebook.com/adpreferences/ad_settings)
  4) Navigate to the interests section (Categories used to reach you >> Interest Categories)
  5) Click the button provided by the extensions to clear all of your interests!

@@ -24,6 +24,26 @@ var languageMap = {
     langMapAllInterestsButton: "Alle Interessen ansehen",
     langMapRemoveButton: "Entfernen",
   },
+  "fr_FR" : {
+    langMapHeading: "Catégories de centres d’intérêt",
+    langMapAllInterestsButton: "Voir tous les centres d’intérêt",
+    langMapRemoveButton: "Supprimer",
+  },
+  "pt_BR" : {
+    langMapHeading: "Categorias de interesse",
+    langMapAllInterestsButton: "Ver todos os interesses",
+    langMapRemoveButton: "Remover",
+  },
+  "pt_PT" : {
+    langMapHeading: "Categorias de interesses",
+    langMapAllInterestsButton: "Ver todos os interesses",
+    langMapRemoveButton: "Remover",
+  },
+  "tr_TR" : {
+    langMapHeading: "İlgi Alanı Kategorileri",
+    langMapAllInterestsButton: "Tüm İlgi Alanlarını Gör",
+    langMapRemoveButton: "Kaldır",
+  },
 }
 
 function consoleLog(someOutput) {
