@@ -14,27 +14,37 @@ Download it from:
  - Edge: https://microsoftedge.microsoft.com/addons/detail/jfjcfgaegiecjgaimdiadeokpipdmeli
  - Opera: Still pending?
 
-## How it works?
+## How to use it?
 
  1) Install the extension from the browser store
- 2) Navigate to your [Facebook advert settings](https://www.facebook.com/adpreferences/ad_settings)
- 3) Navigate to the interests section (Categories used to reach you >> Interest Categories)
- 4) Click the button provided by the extensions to clear all of your interests!
+ 2) Switch Facebook to a supported language (Current en_US, en_GB, de_DE)
+ 3) Navigate to your [Facebook advert settings](https://www.facebook.com/adpreferences/ad_settings)
+ 4) Navigate to the interests section (Categories used to reach you >> Interest Categories)
+ 5) Click the button provided by the extensions to clear all of your interests!
 
 ## What does it look like?
 
 ![](./media/screenshot-1280x800.png)
 
-## Icon
+## How does it work?
 
-The Icon was created using some GPL licensed icons:
- - https://www.iconfinder.com/icons/1054970/layers_stack_icon
- - https://www.iconfinder.com/icons/1055074/block_denied_no_no_symbol_stop_universal_no_icon
- - https://www.iconfinder.com/icons/1055113/bicycle_bike_biker_icon
- - https://www.iconfinder.com/icons/1055073/coding_programming_tags_icon
- - https://www.iconfinder.com/icons/1055063/heel_high_heel_shoe_icon
+Facebook doesn't provide the easiest UI to write extensions for.
 
-The SVG for the icon can be found in the media directory.
+This extension runs on a set of specific Facebook pages and finds the elements of a page that it needs to interact with by using the textual content.
+
+It looks for `Interest Categories` first, then looking for the buttons that it will need to click.
+
+This means that each language needs extra work to be supported, and if the text or page ever change further changed might be needed.
+
+## Further language support
+
+In order for more languages to be supported the text of some UI elements on the Facebook page must be added to the extension code.
+
+These texts, along with the language code must be added [here](https://github.com/addshore/browser-facebook-advert-interest-cleaner/blob/master/app/scripts/adpreferences-ad_settings.js).
+
+If you don't want to touch the code, just file an [issue](https://github.com/addshore/browser-facebook-advert-interest-cleaner/issues) requesting the language support, including the strings you have collected.
+
+![](https://i.imgur.com/q9Yl7Ux.png)
 
 ## Development
 
@@ -51,7 +61,7 @@ This extension uses [webextension-toolbox](https://github.com/HaNdTriX/webextens
 
 ### For builds
 
-MAke sure you update the version number everywhere & the date that is displayed in the UI.
+Make sure you update the version number everywhere & the date that is displayed in the UI.
 
     npm run build chrome
     npm run build firefox
@@ -65,9 +75,10 @@ These commands will output built files to the `dist` directory, but also zips to
 - Bump the version number in:
   - package.json
   - manifest.json
-- Update the CHANGELOG
+- Update the CHANGELOG.md
 - Update the version in the text in the main JS file
-- Build all of the versions
+- Tag the change on Github (vx.x.x)
+- Wait for the [Github actions](https://github.com/addshore/browser-facebook-advert-interest-cleaner/actions) to build the files
 - Upload to the various stores
   - [Chrome](https://chrome.google.com/webstore/devconsole)
   - [Mozilla](https://addons.mozilla.org/en-US/developers/)
@@ -77,3 +88,14 @@ These commands will output built files to the `dist` directory, but also zips to
 ### Environment
 
 The build tool also defines a variable named `process.env.NODE_ENV` in your scripts. 
+
+## Icon
+
+The Icon was created using some GPL licensed icons:
+ - https://www.iconfinder.com/icons/1054970/layers_stack_icon
+ - https://www.iconfinder.com/icons/1055074/block_denied_no_no_symbol_stop_universal_no_icon
+ - https://www.iconfinder.com/icons/1055113/bicycle_bike_biker_icon
+ - https://www.iconfinder.com/icons/1055073/coding_programming_tags_icon
+ - https://www.iconfinder.com/icons/1055063/heel_high_heel_shoe_icon
+
+The SVG for the icon can be found in the media directory.

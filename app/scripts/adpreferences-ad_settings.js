@@ -13,7 +13,17 @@ var languageMap = {
     langMapHeading: "Interest Categories",
     langMapAllInterestsButton: "See All Interests",
     langMapRemoveButton: "Remove",
-  }
+  },
+  "en_GB" : {
+    langMapHeading: "Interest Categories",
+    langMapAllInterestsButton: "See All Interests",
+    langMapRemoveButton: "Remove",
+  },
+  "de_DE" : {
+    langMapHeading: "Interessen",
+    langMapAllInterestsButton: "Alle Interessen ansehen",
+    langMapRemoveButton: "Entfernen",
+  },
 }
 
 function consoleLog(someOutput) {
