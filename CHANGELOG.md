@@ -1,5 +1,8 @@
 # Change log
 
+## 1.1.0 (TBA)
+
+- Refactoring to allow running the same logic for multiple FB things
 ## 1.0.8 (15 January 2021)
 
 - Update for case change in English FB page
