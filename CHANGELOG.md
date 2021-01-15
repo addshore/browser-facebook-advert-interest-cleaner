@@ -1,5 +1,10 @@
 # Change log
 
+## 1.0.8 (15 January 2021)
+
+- Update for case change in English FB page
+  - This includes general handling for uppercase things now
+
 ## 1.0.7 (11 January 2021)
 
 - Added multilingual functionality. Currently supported:

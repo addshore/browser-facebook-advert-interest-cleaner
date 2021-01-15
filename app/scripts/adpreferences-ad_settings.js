@@ -8,6 +8,7 @@ var waitBetweenClicks = 200
 const langMapHeading = 'langMapHeading';
 const langMapRemoveButton = 'langMapRemoveButton';
 const langMapAllInterestsButton = 'langMapAllInterestsButton';
+//Note: If new chars appear here as caps, they may need to be added to the translateWrap method
 var languageMap = {
   "en_US" : {
     langMapHeading: "Interest Categories",
@@ -61,10 +62,13 @@ if(!(languageCode in languageMap)){
 consoleLog( "Running with language: " + languageName + " ("+languageCode+")" );
 
 // Calculate some xpaths to use
-var xpathForInterestsBoxHeading = "(//span[text() = '"+languageMap[languageCode][langMapHeading]+"'])[2]"
+function translateWrap(value) {
+  return "translate("+value+",'ABCDEFGHIJKLMNOPQRSTUVWXYZİ','abcdefghijklmnopqrstuvwxyzi')"
+}
+var xpathForInterestsBoxHeading = "(//span["+translateWrap("text()")+" = "+translateWrap("'"+languageMap[languageCode][langMapHeading]+"'")+"])[2]"
 var xpathForInterestsBox = xpathForInterestsBoxHeading + "/../../../.."
-var xpathInBoxForSeeAllInterestsButton = "//span[text() = '"+languageMap[languageCode][langMapAllInterestsButton]+"']"
-var xpathInBoxForRemoveButton = "//span[text() = '"+languageMap[languageCode][langMapRemoveButton]+"']"
+var xpathInBoxForSeeAllInterestsButton = "//span["+translateWrap("text()")+" = "+"'"+translateWrap(languageMap[languageCode][langMapAllInterestsButton])+"'"+"]"
+var xpathInBoxForRemoveButton = "//span["+translateWrap("text()")+" = "+"'"+translateWrap(languageMap[languageCode][langMapRemoveButton])+"'"+"]"
 
 // Try to setup our UI bit every second
 // This is needed as the elements we detect will not appear in the DOM until they are navigated to
@@ -101,7 +105,7 @@ function init( boxElement, headingElement ) {
   // Add the custom UI elements
   // text body
   var preButtonText = document.createElement('span');
-  preButtonText.innerHTML = "<strong>Facebook Advert Interest Cleaner (11 Jan 2021)</strong>: "
+  preButtonText.innerHTML = "<strong>Facebook Advert Interest Cleaner (15 Jan 2021)</strong>: "
   area.append(preButtonText)
   // button
   var button = document.createElement("input");
