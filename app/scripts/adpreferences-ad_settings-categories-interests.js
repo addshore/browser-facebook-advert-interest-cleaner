@@ -70,7 +70,9 @@ app.setup(
       "Remove all interests",
       async function() {
         await nav.clickMatchingXpathInElement(seeAllInterestsButton,boxElement);
+        await nav.sleep(500); // Try and wait for the DOM to update (Issue #5)
         await nav.clickAllMatchingXpathInElement(removeButton,boxElement);
+        await nav.clickAllMatchingXpathInElement(removeButton,boxElement); // Make sure that we clicked all the buttons (Issue #5)
         nav.scrollToTop()
         console.log("All done!")
       }

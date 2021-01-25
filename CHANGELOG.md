@@ -3,6 +3,8 @@
 ## 1.1.0 (TBA)
 
 - Refactoring to allow running the same logic for multiple FB things
+- Make sure that all of the "Remove" buttons are clicked if they don't instantly load ([Issue #5](https://github.com/addshore/browser-facebook-advert-interest-cleaner/issues/5))
+
 ## 1.0.8 (15 January 2021)
 
 - Update for case change in English FB page

@@ -35,6 +35,7 @@ async function clickAllMatchingXpathInElement(xpath, element) {
 }
 
 module.exports = {
+  sleep,
   scrollClickAndWait,
   scrollToTop,
   clickAllMatchingXpathInElement,
