@@ -23,7 +23,8 @@
         "*://www.facebook.com/adpreferences/ad_settings/*"
       ],
       "js": [
-        "scripts/adpreferences-ad_settings-categories-interests.js"
+        "scripts/adpreferences-ad_settings-categories-interests.js",
+        "scripts/adpreferences-ad_settings-categories-other.js"
       ],
       "css": [
         "styles/general.css"

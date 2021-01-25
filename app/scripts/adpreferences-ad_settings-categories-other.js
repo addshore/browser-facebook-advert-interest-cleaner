@@ -9,40 +9,15 @@ const languageName = fb.detectLanguageName()
 //Note: If new chars appear here as caps, they may need to be added to the xpath.translateWrap method
 var languageMap = {
   "en_US" : {
-    langMapHeading: "Interest Categories",
-    langMapAllButton: "See All Interests",
+    langMapHeading: "Other Categories",
+    langMapAllButton: "See All Categories",
     langMapRemoveButton: "Remove",
   },
   "en_GB" : {
-    langMapHeading: "Interest Categories",
-    langMapAllButton: "See All Interests",
+    langMapHeading: "Other categories",
+    langMapAllButton: "See All Categories",
     langMapRemoveButton: "Remove",
-  },
-  "de_DE" : {
-    langMapHeading: "Interessen",
-    langMapAllButton: "Alle Interessen ansehen",
-    langMapRemoveButton: "Entfernen",
-  },
-  "fr_FR" : {
-    langMapHeading: "Catégories de centres d’intérêt",
-    langMapAllButton: "Voir tous les centres d’intérêt",
-    langMapRemoveButton: "Supprimer",
-  },
-  "pt_BR" : {
-    langMapHeading: "Categorias de interesse",
-    langMapAllButton: "Ver todos os interesses",
-    langMapRemoveButton: "Remover",
-  },
-  "pt_PT" : {
-    langMapHeading: "Categorias de interesses",
-    langMapAllButton: "Ver todos os interesses",
-    langMapRemoveButton: "Remover",
-  },
-  "tr_TR" : {
-    langMapHeading: "İlgi Alanı Kategorileri",
-    langMapAllButton: "Tüm İlgi Alanlarını Gör",
-    langMapRemoveButton: "Kaldır",
-  },
+  }
 }
 
 // Decide if this app can run or not based on the language being used
@@ -61,13 +36,13 @@ var removeButton = xpath.ofTagWithText("span",languageMap[languageCode].langMapR
 app.setup(
   box,
   boxHeading,
-  "faicAdPrefsAdSettingsCategoriesInterests",
+  "faicAdPrefsAdSettingsCategoriesOther",
   function( idForInjection, boxElement, headingElement ) {
     app.addUI(
       idForInjection,
       headingElement,
-      "Facebook Advert Interest Cleaner (25 Jan 2021)",
-      "Remove all interests",
+      "Facebook Advert Category Cleaner (25 Jan 2021)",
+      "Remove all categories",
       async function() {
         await nav.clickMatchingXpathInElement(seeAllButton,boxElement);
         await nav.sleep(500); // Try and wait for the DOM to update (Issue #5)

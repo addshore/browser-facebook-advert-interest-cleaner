@@ -1,9 +1,12 @@
-function log(someOutput) {
-  console.log( "facebook-adspreferences-add_settings: " + someOutput );
+function log(message) {
+  console.log( "fb-ad-interest-cleaner" + ": " + message );
 }
-function logAndDie(someOutput) {
-  log(someOutput)
-  throw new Error(someOutput);
+function logAndDie(message) {
+  log(message)
+  throw new Error("fb-ad-interest-cleaner" + ": " + message);
 }
 
-module.exports = { log, logAndDie };
+module.exports = {
+  log,
+  logAndDie,
+};
