@@ -1,8 +1,9 @@
 # Change log
 
-## 1.1.0 (TBA)
+## 1.1.0 (25 January 2021)
 
 - Refactoring to allow running the same logic for multiple FB things
+- Also add a clear all button to "Other Categories" when viewing in English ([Issue #6](https://github.com/addshore/browser-facebook-advert-interest-cleaner/issues/5))
 - Make sure that all of the "Remove" buttons are clicked if they don't instantly load ([Issue #5](https://github.com/addshore/browser-facebook-advert-interest-cleaner/issues/5))
 
 ## 1.0.8 (15 January 2021)
