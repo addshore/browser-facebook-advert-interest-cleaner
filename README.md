@@ -9,6 +9,7 @@ A browser extension that provides a small button to easily clear all of your Fac
 ## How to install?
 
 Download it from:
+
  - Chrome: https://chrome.google.com/webstore/detail/facebook-advert-interest/nheaildopjpofjpkeihboipgnagofndi
  - Mozilla:  https://addons.mozilla.org/en-US/firefox/addon/facebook-ad-interest-cleaner/
  - Edge: https://microsoftedge.microsoft.com/addons/detail/jfjcfgaegiecjgaimdiadeokpipdmeli
@@ -21,6 +22,8 @@ Download it from:
  3) Navigate to your [Facebook advert settings](https://www.facebook.com/adpreferences/ad_settings)
  4) Navigate to the interests section (Categories used to reach you >> Interest Categories)
  5) Click the button provided by the extensions to clear all of your interests!
+
+You can also navigate to the "Other Categories" section in English and find a similar button.
 
 ## What does it look like?
 
