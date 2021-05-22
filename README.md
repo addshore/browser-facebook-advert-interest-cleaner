@@ -80,7 +80,7 @@ These commands will output built files to the `dist` directory, but also zips to
   - manifest.json
 - Update the CHANGELOG.md
 - Update the version in the text in the main JS file
-- Tag the change on Github (vx.x.x)
+- Tag the change on Github (vx.x.x), DO NOT make a Github Release, this is done by Github Actions
 - Wait for the [Github actions](https://github.com/addshore/browser-facebook-advert-interest-cleaner/actions) to build the files
 - See the [STORE_NOTES.md](./STORE_NOTES.md) file for helpful details on uploading...
 
