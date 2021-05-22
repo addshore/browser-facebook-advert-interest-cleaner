@@ -1,5 +1,9 @@
 # Change log
 
+## 1.1.1 (22 May 2021)
+
+- Fix language detection due to Facebook changes ([Issue #10](https://github.com/addshore/browser-facebook-advert-interest-cleaner/issues/10))
+
 ## 1.1.0 (25 January 2021)
 
 - Refactoring to allow running the same logic for multiple FB things
