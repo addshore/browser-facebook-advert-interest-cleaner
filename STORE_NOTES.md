@@ -22,7 +22,7 @@ Support me: https://www.buymeacoffee.com/addshore
 Code: https://github.com/addshore/browser-facebook-advert-interest-cleaner
 ```
 
-## [Chrome](https://chrome.google.com/webstore/devconsole) @ 1.1.1
+## [Chrome](https://chrome.google.com/webstore/devconsole) @ REMOVED (due to trademark issue)
 
 ## [Mozilla](https://addons.mozilla.org/en-US/developers/) @ 1.1.1
 
