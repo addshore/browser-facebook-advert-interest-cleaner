@@ -1,11 +1,11 @@
-# Facebook advert interest cleaner (Store Notes)
+# Advert interest cleaner (Store Notes)
 
-Name: Facebook Advert Interest Cleaner
+Name: Advert Interest Cleaner
 
 
 | Feild Name     | Value        |
 | :------------- | :----------: |
-| Name | Facebook Advert Interest Cleaner   |
+| Name | Advert Interest Cleaner   |
 | Short Summary   | A little button to easily clear your Facebook Advert Interests |
 | Contribution URL | https://www.buymeacoffee.com/addshore |
 

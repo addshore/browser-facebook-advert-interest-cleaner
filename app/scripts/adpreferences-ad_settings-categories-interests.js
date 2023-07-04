@@ -65,7 +65,7 @@ app.setup(
     app.addUI(
       idForInjection,
       headingElement,
-      "Facebook Advert Interest Cleaner (22 May 2021)",
+      "Advert Interest Cleaner (04 July 2023)",
       "Remove all interests",
       async function() {
         await nav.clickMatchingXpathInElement(seeAllButton,boxElement);
