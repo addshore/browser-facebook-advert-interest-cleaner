@@ -1,5 +1,9 @@
 # Change log
 
+## 1.1.2 (04 July 2023)
+
+- Remove "Facebook" from name of extension due to trademark claim by Facebook on the chrome web store.
+
 ## 1.1.1 (22 May 2021)
 
 - Fix language detection due to Facebook changes ([Issue #10](https://github.com/addshore/browser-facebook-advert-interest-cleaner/issues/10))
